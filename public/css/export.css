@@ -89,6 +89,11 @@ label {
     justify-content: space-between;
 }
 
+.operator,
+.delete-btn {
+    width: 10rem;
+}
+
 .table-function {
     display: flex;
     align-items: center;

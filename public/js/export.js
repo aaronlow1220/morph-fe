@@ -62,6 +62,37 @@ function fetchPlatform() {
 		.catch((error) => console.error("Error:", error));
 }
 
+function addFilter() {
+    const filterContainer = document.getElementById("filter-container");
+    const filterCount = filterContainer.childElementCount;
+    const filterTemplate = `
+    <div class="card-row" id="filter-${filterCount + 1}">
+        <div class="form-group">
+            <input class="input" id="key-${filterCount + 1}" type="text" placeholder="Key">
+        </div>
+        <div class="form-group operator">
+            <select class="input" id="operator-${filterCount + 1}">
+                <option value="in">等於</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="input" id="value-${filterCount + 1}" type="text" placeholder="Value">
+        </div>
+        <div class="form-group delete-btn">
+            <button class="btn" onclick="removeFilter(${filterCount + 1})">刪除</button>
+        </div>
+    </div>`;
+
+    filterContainer.innerHTML += filterTemplate;
+
+}
+
+function removeFilter(filterId) {
+    const filter = document.getElementById(`filter-${filterId}`);
+    filter.remove();
+
+}
+
 // Window onload
 window.onload = () => {
 	fetchClient();
