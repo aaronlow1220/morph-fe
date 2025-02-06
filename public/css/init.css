@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100svw;
+    height: 100svh;
+    color: #2c2c2c;
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    background-color: #ebebeb;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 1.5rem;
+    overflow: scroll;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
