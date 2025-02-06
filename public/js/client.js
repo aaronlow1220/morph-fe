@@ -32,7 +32,7 @@ function createClient() {
 			if (!response.ok) {
 				throw new Error("Error creating client");
 			}
-			alert("Success");
+			stateModal("success", "成功新增一筆資料");
 		})
-		.catch((error) => alert("Error"));
+		.catch((error) => stateModal("failed", "失敗，請再試一次"));
 }

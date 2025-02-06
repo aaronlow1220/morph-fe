@@ -74,13 +74,13 @@ label {
     transition: background-color 0.1s;
 }
 
-#clear {
+.cancel-btn {
     color: #2c2c2c;
     background-color: #fefefe;
     transition: background-color 0.1s;
 }
 
-#clear:hover {
+.cancel-btn:hover {
     background-color: #f0f0f0;
     transition: background-color 0.1s;
 }
