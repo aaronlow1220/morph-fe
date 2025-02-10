@@ -168,6 +168,12 @@ td {
     overflow-wrap: break-word;
 }
 
+.page {
+    padding: 0 0.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
 tr:first-child th:first-child {
     border-top-left-radius: 0.5rem;
 }

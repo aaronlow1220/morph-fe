@@ -177,7 +177,7 @@ function fetchAllFeedFile(page = 1) {
 	const data = {
 		expand: "client,platform",
 		page: page,
-		pageSize: 20,
+		pageSize: 2,
 	};
 
 	fetch(url, {
@@ -270,12 +270,14 @@ function fetchAllFeedFile(page = 1) {
 					};
 				});
 			});
+			showPagination(data["_meta"].currentPage, data["_meta"].pageCount);
 		})
 		.catch((error) => console.error("Error:", error));
 }
 
 function showPagination(page, totalPage) {
 	const pagination = document.getElementById("pagination-pages");
+	pagination.innerHTML = "";
 	// only show 5 pages at a time
 	if (totalPage > 5) {
 		if (page > 3 && page < totalPage - 2) {
@@ -285,22 +287,47 @@ function showPagination(page, totalPage) {
 				if (i === page) {
 					pageItem.setAttribute("class", "page active");
 				}
+				pageItem.onclick = () => fetchAllFeedFile(i);
 				pageItem.innerHTML = i;
 				pagination.appendChild(pageItem);
 			}
-		}
-
-		if (page <= 3 || page >= totalPage - 2) {
+		} else if (page <= 3) {
 			for (let i = 1; i <= 5; i++) {
 				const pageItem = document.createElement("p");
 				pageItem.setAttribute("class", "page");
 				if (i === page) {
 					pageItem.setAttribute("class", "page active");
 				}
+				pageItem.onclick = () => fetchAllFeedFile(i);
+				pageItem.innerHTML = i;
+				pagination.appendChild(pageItem);
+			}
+		} else {
+			for (let i = totalPage - 4; i <= totalPage; i++) {
+				const pageItem = document.createElement("p");
+				pageItem.setAttribute("class", "page");
+				if (i === page) {
+					pageItem.setAttribute("class", "page active");
+				}
+				pageItem.onclick = () => fetchAllFeedFile(i);
 				pageItem.innerHTML = i;
 				pagination.appendChild(pageItem);
 			}
 		}
+	}
+}
+
+function nextPage() {
+	const currentPage = document.querySelector(".page.active");
+	if (currentPage.nextSibling) {
+		currentPage.nextSibling.click();
+	}
+}
+
+function prevPage() {
+	const currentPage = document.querySelector(".page.active");
+	if (currentPage.previousSibling) {
+		currentPage.previousSibling.click();
 	}
 }
 
