@@ -94,6 +94,23 @@ label {
     width: 10rem;
 }
 
+.pagination,
+.pagination-pages {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    align-items: center;
+    margin: 0 0.5rem;
+}
+
+.page.active {
+    background-color: #3c3c3c;
+    color: #fefefe;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
 .table-function {
     display: flex;
     align-items: center;
@@ -102,6 +119,9 @@ label {
 
 .table-container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
 }
 
 .table-container table {
@@ -127,7 +147,21 @@ label {
     background-color: #fefefe;
     color: #2c2c2c;
     padding: 0.7rem 1rem;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+}
+
+.card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#edit-filter-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
 }
 
 tr:first-child th:first-child {
