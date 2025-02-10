@@ -10,6 +10,9 @@
 
 .sidebar-logo {
     text-align: center;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 .sidebar-section {
