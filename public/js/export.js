@@ -177,7 +177,7 @@ function fetchAllFeedFile(page = 1) {
 	const data = {
 		expand: "client,platform",
 		page: page,
-		pageSize: 2,
+		pageSize: 20,
 	};
 
 	fetch(url, {
