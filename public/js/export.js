@@ -14,7 +14,9 @@ function fetchClient() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Failed to fetch client data");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -27,7 +29,7 @@ function fetchClient() {
 				client.appendChild(option);
 			});
 		})
-		.catch((error) => console.error("Error:", error));
+		.catch((error) => console.error("Error:", error.message));
 }
 
 function fetchPlatform() {
@@ -46,7 +48,9 @@ function fetchPlatform() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Failed to fetch platform data");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -59,7 +63,7 @@ function fetchPlatform() {
 				platform.appendChild(option);
 			});
 		})
-		.catch((error) => console.error("Error:", error));
+		.catch((error) => console.error("Error:", error.message));
 }
 
 function addFilter() {
@@ -158,7 +162,9 @@ function createFeedFile() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("建立 Feed File 失敗，請稍後再試");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -168,7 +174,7 @@ function createFeedFile() {
 				stateModal("success", "建立 Feed File 成功");
 			});
 		})
-		.catch((error) => stateModal("error", "建立 Feed File 失敗，請稍後再試"));
+		.catch((error) => stateModal("error", `建立 Feed File 失敗: ${error.message}`));
 }
 
 function fetchAllFeedFile(page = 1) {
@@ -190,7 +196,9 @@ function fetchAllFeedFile(page = 1) {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Failed to fetch feed file data");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -272,7 +280,7 @@ function fetchAllFeedFile(page = 1) {
 			});
 			showPagination(data["_meta"].currentPage, data["_meta"].pageCount);
 		})
-		.catch((error) => console.error("Error:", error));
+		.catch((error) => console.error("Error:", error.message));
 }
 
 function showPagination(page, totalPage) {
@@ -372,11 +380,13 @@ async function refreshFeedFile(id, customFilter) {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error();
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			stateModal("success", "生成檔案成功");
 		})
-		.catch((error) => stateModal("error", "生成檔案失敗"));
+		.catch((error) => stateModal("error", `生成檔案失敗: ${error.message}`));
 }
 
 function addToClipboard(content) {
@@ -402,7 +412,9 @@ function openEditFeedFile(id) {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Failed to fetch feed file data");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -467,10 +479,8 @@ function openEditFeedFile(id) {
 
 			openModal();
 		})
-		.catch((error) => console.error("Error:", error));
+		.catch((error) => console.error("Error:", error.message));
 }
-
-function editFeedFile(id) {}
 
 function addEditFilter() {
 	const filterContainer = document.getElementById("edit-filter-container");
@@ -514,7 +524,9 @@ function updateFeedFile(id) {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("更新 Feed File 失敗，請稍後再試");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -522,7 +534,7 @@ function updateFeedFile(id) {
 			fetchAllFeedFile();
 			stateModal("success", "更新 Feed File 成功");
 		})
-		.catch((error) => stateModal("error", "更新 Feed File 失敗，請稍後再試"));
+		.catch((error) => stateModal("error", `更新 Feed File 失敗: ${error.message}`));
 }
 
 function filterParse(filter) {

@@ -164,7 +164,8 @@ label {
     gap: 0.5rem;
 }
 
-td {
+td,
+th {
     overflow-wrap: break-word;
 }
 

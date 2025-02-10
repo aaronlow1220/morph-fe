@@ -30,9 +30,11 @@ function createClient() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Error creating client");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
-			stateModal("success", "成功新增一筆資料");
+			stateModal("success", "成功新增客戶");
 		})
-		.catch((error) => stateModal("failed", "失敗，請再試一次"));
+		.catch((error) => stateModal("error", `新增客戶失敗: ${error.message}`));
 }

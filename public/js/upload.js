@@ -35,7 +35,9 @@ function fetchClient() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error("Network response was not ok");
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			return response.json();
 		})
@@ -48,7 +50,7 @@ function fetchClient() {
 				clientList.appendChild(option);
 			});
 		})
-		.catch((error) => console.error(error));
+		.catch((error) => console.error("Error:", error.message));
 }
 
 function uploadFile() {
@@ -68,11 +70,13 @@ function uploadFile() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error();
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			stateModal("success", "成功上傳檔案");
 		})
-		.catch((error) => stateModal("error", "上傳檔案失敗，請再試一次"));
+		.catch((error) => stateModal("error", `上傳檔案失敗: ${error.message}`));
 }
 
 function uploadUrl() {
@@ -90,11 +94,13 @@ function uploadUrl() {
 	})
 		.then((response) => {
 			if (!response.ok) {
-				throw new Error();
+				return response.json().then((response) => {
+					throw new Error(response.message);
+				});
 			}
 			stateModal("success", "成功使用 URL 上傳檔案");
 		})
-		.catch((error) => stateModal("error", "使用 URL 上傳檔案失敗，請再試一次"));
+		.catch((error) => stateModal("error", `使用 URL 上傳檔案失敗: ${error.message}`));
 }
 
 function upload() {
