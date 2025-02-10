@@ -211,7 +211,7 @@ function fetchAllFeedFile(page = 1) {
 
 				tdClient.innerHTML = feed.client.label;
 				tdPlatform.innerHTML = feed.platform.label;
-				tdFilter.innerHTML = JSON.stringify(feed.filter);
+				tdFilter.innerHTML = filterParse(JSON.parse(feed.filter));
 				tdUtm.innerHTML = feed.utm;
 				tdPassword.innerHTML = `<input class="input" type="password" id="password-${feed.id}" placeholder="密碼">`;
 				if (feed.sftp == "1") {
@@ -496,6 +496,20 @@ function updateFeedFile(id) {
 			stateModal("success", "更新 Feed File 成功");
 		})
 		.catch((error) => stateModal("error", "更新 Feed File 失敗，請稍後再試"));
+}
+
+function filterParse(filter) {
+	const filterList = filter.filter;
+	console.log(filterList);
+	const filterResult = [];
+	if (filterList.or) {
+		filterList.or.forEach((param) => {
+			const key = Object.keys(param)[0];
+			const value = Object.values(param)[0];
+			filterResult.push(`${key} ${Object.keys(value)[0]} ${value[Object.keys(value)[0]]}`);
+		});
+	}
+	return filterResult.join(", ");
 }
 
 // Window onload
