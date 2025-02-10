@@ -500,7 +500,6 @@ function updateFeedFile(id) {
 
 function filterParse(filter) {
 	const filterList = filter.filter;
-	console.log(filterList);
 	const filterResult = [];
 	if (filterList.or) {
 		filterList.or.forEach((param) => {

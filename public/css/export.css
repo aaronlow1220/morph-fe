@@ -164,6 +164,10 @@ label {
     gap: 0.5rem;
 }
 
+td {
+    overflow-wrap: break-word;
+}
+
 tr:first-child th:first-child {
     border-top-left-radius: 0.5rem;
 }
