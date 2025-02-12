@@ -222,7 +222,7 @@ function fetchAllFeedFile(page = 1) {
 				tdFilter.innerHTML = filterParse(JSON.parse(feed.filter));
 				tdUtm.innerHTML = feed.utm;
 				tdPassword.innerHTML = `<input class="input" type="password" id="password-${feed.id}" placeholder="密碼">`;
-				if (feed.sftp == "1") {
+				if (feed.platform.sftp == "1") {
 					const button = document.createElement("button");
 					button.setAttribute("class", "btn");
 					button.setAttribute(

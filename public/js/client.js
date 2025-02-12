@@ -38,3 +38,12 @@ function createClient() {
 		})
 		.catch((error) => stateModal("error", `新增客戶失敗: ${error.message}`));
 }
+
+function clearInputs() {
+	const inputContainer = document.getElementById("to_form");
+	const inputs = inputContainer.querySelectorAll("input");
+
+	inputs.forEach((input) => {
+		input.value = "";
+	});
+}

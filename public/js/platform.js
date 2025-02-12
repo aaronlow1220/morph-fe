@@ -38,3 +38,12 @@ function createPlatform() {
 		})
 		.catch((error) => stateModal("error", `新增平台失敗: ${error.message}`));
 }
+
+function clearInputs() {
+	const inputContainer = document.getElementById("to_form");
+	const inputs = inputContainer.querySelectorAll("input");
+
+	inputs.forEach((input) => {
+		input.value = "";
+	});
+}
