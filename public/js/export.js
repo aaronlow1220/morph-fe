@@ -1,6 +1,7 @@
 function fetchClient() {
 	const url = `${BASE_URL}/client/search`;
 	const data = {
+		fields: "id,label",
 		pageSize: 50,
 	};
 
@@ -35,6 +36,7 @@ function fetchClient() {
 function fetchPlatform() {
 	const url = `${BASE_URL}/platform/search`;
 	const data = {
+		fields: "id,label",
 		pageSize: 50,
 	};
 
